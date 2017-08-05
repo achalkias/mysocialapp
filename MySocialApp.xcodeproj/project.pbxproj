@@ -11,9 +11,11 @@
 		E8F229B11F3622CE00F59DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229B01F3622CE00F59DBC /* AppDelegate.swift */; };
 		E8F229B31F3622CE00F59DBC /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229B21F3622CE00F59DBC /* SignInVC.swift */; };
 		E8F229B61F3622CE00F59DBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F229B41F3622CE00F59DBC /* Main.storyboard */; };
-		E8F229B81F3622CE00F59DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F229B71F3622CE00F59DBC /* Assets.xcassets */; };
 		E8F229BB1F3622CE00F59DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F229B91F3622CE00F59DBC /* LaunchScreen.storyboard */; };
 		E8F229C31F3623B700F59DBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8F229C21F3623B700F59DBC /* GoogleService-Info.plist */; };
+		E8F229C91F36321000F59DBC /* CERA GR LIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = E8F229C81F36321000F59DBC /* CERA GR LIGHT.OTF */; };
+		E8F229CB1F36350F00F59DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F229CA1F36350F00F59DBC /* Assets.xcassets */; };
+		E8F229CD1F363A8400F59DBC /* CERA GR BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = E8F229CC1F363A8400F59DBC /* CERA GR BOLD.OTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +26,12 @@
 		E8F229B01F3622CE00F59DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8F229B21F3622CE00F59DBC /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		E8F229B51F3622CE00F59DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E8F229B71F3622CE00F59DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8F229BA1F3622CE00F59DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8F229BC1F3622CE00F59DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F229C21F3623B700F59DBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E8F229C81F36321000F59DBC /* CERA GR LIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CERA GR LIGHT.OTF"; sourceTree = "<group>"; };
+		E8F229CA1F36350F00F59DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		E8F229CC1F363A8400F59DBC /* CERA GR BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CERA GR BOLD.OTF"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +84,13 @@
 		E8F229AF1F3622CE00F59DBC /* MySocialApp */ = {
 			isa = PBXGroup;
 			children = (
+				E8F229C71F3631C000F59DBC /* Resources */,
 				E8F229C41F36265200F59DBC /* Model */,
 				E8F229C51F36265800F59DBC /* View */,
 				E8F229C61F36265E00F59DBC /* Controller */,
 				E8F229B01F3622CE00F59DBC /* AppDelegate.swift */,
 				E8F229B41F3622CE00F59DBC /* Main.storyboard */,
-				E8F229B71F3622CE00F59DBC /* Assets.xcassets */,
+				E8F229CA1F36350F00F59DBC /* Assets.xcassets */,
 				E8F229B91F3622CE00F59DBC /* LaunchScreen.storyboard */,
 				E8F229BC1F3622CE00F59DBC /* Info.plist */,
 				E8F229C21F3623B700F59DBC /* GoogleService-Info.plist */,
@@ -113,6 +118,15 @@
 				E8F229B21F3622CE00F59DBC /* SignInVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		E8F229C71F3631C000F59DBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E8F229CC1F363A8400F59DBC /* CERA GR BOLD.OTF */,
+				E8F229C81F36321000F59DBC /* CERA GR LIGHT.OTF */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +192,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8F229CB1F36350F00F59DBC /* Assets.xcassets in Resources */,
 				E8F229BB1F3622CE00F59DBC /* LaunchScreen.storyboard in Resources */,
 				E8F229C31F3623B700F59DBC /* GoogleService-Info.plist in Resources */,
-				E8F229B81F3622CE00F59DBC /* Assets.xcassets in Resources */,
+				E8F229C91F36321000F59DBC /* CERA GR LIGHT.OTF in Resources */,
+				E8F229CD1F363A8400F59DBC /* CERA GR BOLD.OTF in Resources */,
 				E8F229B61F3622CE00F59DBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

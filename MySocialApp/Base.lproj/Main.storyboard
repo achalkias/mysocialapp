@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CERA GR LIGHT.OTF">
+            <string>CeraGR-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
@@ -18,13 +24,118 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVo-TG-EYL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Social-App" translatesAutoresizingMaskIntoConstraints="NO" id="CtR-08-iBh">
+                                        <rect key="frame" x="39.5" y="11" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="2OQ-Jf-cHL"/>
+                                            <constraint firstAttribute="height" constant="128" id="CnE-7J-qQf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CtR-08-iBh" firstAttribute="centerY" secondItem="qVo-TG-EYL" secondAttribute="centerY" id="21x-jt-yLU"/>
+                                    <constraint firstAttribute="height" constant="150" id="hRf-PR-xeH"/>
+                                    <constraint firstItem="CtR-08-iBh" firstAttribute="centerX" secondItem="qVo-TG-EYL" secondAttribute="centerX" id="nNG-nO-DHb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jl-xU-eFh">
+                                <rect key="frame" x="0.0" y="493" width="320" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you havent sign in before, an account will be automatically create for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jon-xg-Q9I">
+                                        <rect key="frame" x="8" y="8" width="304" height="59"/>
+                                        <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.050980392156862744" green="0.27843137254901962" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Jon-xg-Q9I" firstAttribute="top" secondItem="5jl-xU-eFh" secondAttribute="top" constant="8" id="gCp-q0-REa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jon-xg-Q9I" secondAttribute="trailing" constant="8" id="hxx-HC-l3E"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jon-xg-Q9I" secondAttribute="bottom" constant="8" id="lKr-jl-7YC"/>
+                                    <constraint firstAttribute="height" constant="75" id="oaW-aI-EeI"/>
+                                    <constraint firstItem="Jon-xg-Q9I" firstAttribute="leading" secondItem="5jl-xU-eFh" secondAttribute="leading" constant="8" id="zIz-P0-a2H"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your sign in method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4G-7A-NjJ">
+                                <rect key="frame" x="16" y="170" width="288" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="MAe-3z-3CK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRd-jy-7AM">
+                                <rect key="frame" x="100" y="210" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.25490196078431371" green="0.36078431372549019" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="WiQ-Y6-s6y"/>
+                                    <constraint firstAttribute="width" constant="120" id="v5J-VE-L2M"/>
+                                </constraints>
+                                <state key="normal" image="f"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SWA-db-RdE">
+                                <rect key="frame" x="46" y="360" width="228" height="121"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dK4-BK-SYl">
+                                        <rect key="frame" x="0.0" y="0.0" width="228" height="30"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjK-3U-C10">
+                                        <rect key="frame" x="0.0" y="45" width="228" height="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-CW-i3a">
+                                        <rect key="frame" x="0.0" y="90" width="228" height="31"/>
+                                        <color key="backgroundColor" red="0.8666666666666667" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="19"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5jl-xU-eFh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1Vi-Yt-RXw"/>
+                            <constraint firstItem="qVo-TG-EYL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8pN-40-qKh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SWA-db-RdE" secondAttribute="trailing" constant="30" id="90C-ji-tUL"/>
+                            <constraint firstItem="SWA-db-RdE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="J5h-9U-wl6"/>
+                            <constraint firstItem="qVo-TG-EYL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KUb-j6-BWT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5jl-xU-eFh" secondAttribute="bottom" id="OyO-jc-WKG"/>
+                            <constraint firstItem="SWA-db-RdE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Prs-fE-3Ba"/>
+                            <constraint firstItem="gRd-jy-7AM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UPH-82-sUx"/>
+                            <constraint firstItem="SWA-db-RdE" firstAttribute="top" secondItem="gRd-jy-7AM" secondAttribute="bottom" constant="30" id="Yni-An-tO0"/>
+                            <constraint firstAttribute="trailing" secondItem="5jl-xU-eFh" secondAttribute="trailing" id="hQm-73-5Zc"/>
+                            <constraint firstAttribute="trailing" secondItem="qVo-TG-EYL" secondAttribute="trailing" id="k5D-fz-qNf"/>
+                            <constraint firstItem="x4G-7A-NjJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="kHh-lc-Hvn"/>
+                            <constraint firstItem="x4G-7A-NjJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kQs-Q5-gdk"/>
+                            <constraint firstItem="x4G-7A-NjJ" firstAttribute="top" secondItem="qVo-TG-EYL" secondAttribute="bottom" constant="20" id="x1i-sb-ybQ"/>
+                            <constraint firstItem="gRd-jy-7AM" firstAttribute="top" secondItem="x4G-7A-NjJ" secondAttribute="bottom" constant="20" id="xRD-hg-Yfe"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Social-App" width="371" height="130"/>
+        <image name="f" width="352" height="328"/>
+    </resources>
 </document>
