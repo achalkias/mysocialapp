@@ -46,5 +46,27 @@
 		<string>CERA GR LIGHT.OTF</string>
 		<string>CERA GR BOLD.OTF</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb267250600431366</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>267250600431366</string>
+    <key>FacebookDisplayName</key>
+    <string>My Social App</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>{human-readable reason for photo access}</string>
 </dict>
 </plist>
