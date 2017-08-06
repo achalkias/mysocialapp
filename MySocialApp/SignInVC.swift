@@ -11,9 +11,10 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import FirebaseAuth
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
-
+    
     
     // MARK: VARIABLES
     //----------------
@@ -29,18 +30,25 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
     }
-
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        //Check if the key exists and perform a segue
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
+    
+    
+    
     // MARK: Custom Functions
     //-----------------------
     
     
     
     func fbLogin() {
-    
+        
         //Init login manager
         let facebookLogin = FBSDKLoginManager()
         
@@ -57,11 +65,11 @@ class SignInVC: UIViewController {
                 self.showAlert(title: "Facebook", message: "Unable to sign in with Facebook")
                 
             } else if result?.isCancelled == true{
-               
+                
                 //There is no error but still the user can cancel the perimssion request
                 print("\(self.TAG) Facebook Error: User canceled Facebook Authentication.")
                 
-                 self.showAlert(title: "Facebook", message: "Unable to sign in with Facebook")
+                self.showAlert(title: "Facebook", message: "Unable to sign in with Facebook")
                 
             }else {
                 
@@ -99,18 +107,31 @@ class SignInVC: UIViewController {
                 //User Successfully authnticated with firebase
                 print("\(self.TAG) Firebase Success: User Successfully authnticated with firebase")
                 
-                 self.showAlert(title: "Facebook", message: "Successfully sign in with Facebook.")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
+                
             }
         }
+        
+    }
     
+    
+    func completeSignIn(id: String){
+        //Save the key so the user will not have to sign in every time
+        let keychainResutl = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("\(self.TAG) Keychain Success: Data saved to keychain \(keychainResutl))")
+        
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+        
     }
     
     
     
     func showAlert(title: String, message: String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    self.present(alert, animated: true, completion: nil)
-    Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     
@@ -127,7 +148,7 @@ class SignInVC: UIViewController {
         
         //Check Email and password fields are not empty
         if let email = emailField.text, let pwd = pwdField.text {
-        
+            
             if pwd.characters.count < 6 {
                 showAlert(title: "SIGN IN", message: "Password must be at least 6 characters")
             }
@@ -141,7 +162,9 @@ class SignInVC: UIViewController {
                     //User Successfully authnticated with firebase
                     print("\(self.TAG) Email User Success: User Successfully authnticated with firebase")
                     
-                     self.showAlert(title: "SIGN IN", message: "Successfully Sign In.")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
                     
                 } else {
                     //User does not exists
@@ -157,7 +180,9 @@ class SignInVC: UIViewController {
                             //User created
                             print("\(self.TAG) Email User Success: User Successfully created with firebase")
                             
-                             self.showAlert(title: "SIGN IN", message: "Account Created Successfully")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }
@@ -173,6 +198,6 @@ class SignInVC: UIViewController {
     }
     
     
-
+    
 }
 

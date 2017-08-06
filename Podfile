@@ -13,6 +13,7 @@ target 'MySocialApp' do
 	pod 'Firebase/Storage'
     pod 'FacebookLogin'
     pod 'FBSDKLoginKit'
+    pod 'SwiftKeychainWrapper'
     
 	
 
