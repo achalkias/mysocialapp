@@ -108,7 +108,8 @@ class SignInVC: UIViewController {
                 print("\(self.TAG) Firebase Success: User Successfully authnticated with firebase")
                 
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid,userData: userData)
                 }
                 
             }
@@ -117,7 +118,10 @@ class SignInVC: UIViewController {
     }
     
     
-    func completeSignIn(id: String){
+    func completeSignIn(id: String,userData: Dictionary<String, String>){
+        //Add user to firebase database
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        
         //Save the key so the user will not have to sign in every time
         let keychainResutl = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("\(self.TAG) Keychain Success: Data saved to keychain \(keychainResutl))")
@@ -163,7 +167,8 @@ class SignInVC: UIViewController {
                     print("\(self.TAG) Email User Success: User Successfully authnticated with firebase")
                     
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData  = ["provvider": user.providerID]
+                        self.completeSignIn(id: user.uid,userData: userData)
                     }
                     
                 } else {
@@ -181,7 +186,8 @@ class SignInVC: UIViewController {
                             print("\(self.TAG) Email User Success: User Successfully created with firebase")
                             
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                 let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid,userData: userData)
                             }
                         }
                     })
