@@ -21,6 +21,12 @@ class SignInVC: UIViewController {
     var TAG:String = "SignInVC"
     
     
+    // MARK: IBOutlets
+    @IBOutlet weak var emailField: FancyField!
+    @IBOutlet weak var pwdField: FancyField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -48,10 +54,14 @@ class SignInVC: UIViewController {
                 //Something is wrong print the error
                 print("\(self.TAG) Facebook Error: \(error.debugDescription)")
                 
+                self.showAlert(title: "Facebook", message: "Unable to sign in with Facebook")
+                
             } else if result?.isCancelled == true{
                
                 //There is no error but still the user can cancel the perimssion request
                 print("\(self.TAG) Facebook Error: User canceled Facebook Authentication.")
+                
+                 self.showAlert(title: "Facebook", message: "Unable to sign in with Facebook")
                 
             }else {
                 
@@ -63,6 +73,8 @@ class SignInVC: UIViewController {
                 
                 //Try to authenticate with firebase
                 self.firebaseAuth(credential)
+                
+                
                 
             }
             
@@ -85,7 +97,9 @@ class SignInVC: UIViewController {
                 print("\(self.TAG) Firebase Error: \(error.debugDescription)")
             } else {
                 //User Successfully authnticated with firebase
-                print("\(self.TAG) Facebook Success: User Successfully authnticated with firebase")
+                print("\(self.TAG) Firebase Success: User Successfully authnticated with firebase")
+                
+                 self.showAlert(title: "Facebook", message: "Successfully sign in with Facebook.")
             }
         }
     
@@ -93,6 +107,11 @@ class SignInVC: UIViewController {
     
     
     
+    func showAlert(title: String, message: String) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    self.present(alert, animated: true, completion: nil)
+    Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    }
     
     
     
@@ -103,6 +122,56 @@ class SignInVC: UIViewController {
         //Try to login via facebook
         fbLogin()
     }
+    
+    @IBAction func signInTapped(_ sender: UIButton) {
+        
+        //Check Email and password fields are not empty
+        if let email = emailField.text, let pwd = pwdField.text {
+        
+            if pwd.characters.count < 6 {
+                showAlert(title: "SIGN IN", message: "Password must be at least 6 characters")
+            }
+            
+            //Try to authorize with firebase
+            Auth.auth().signIn(withEmail: email, password: pwd, completion: { (
+                user, error) in
+                
+                if error == nil {
+                    //User already exists
+                    //User Successfully authnticated with firebase
+                    print("\(self.TAG) Email User Success: User Successfully authnticated with firebase")
+                    
+                     self.showAlert(title: "SIGN IN", message: "Successfully Sign In.")
+                    
+                } else {
+                    //User does not exists
+                    Auth.auth().createUser(withEmail: email, password: pwd, completion: { (
+                        user, error) in
+                        if error != nil {
+                            //Something is wrong
+                            print("\(self.TAG) Email User Success: User Unable to created with firebase")
+                            
+                            self.showAlert(title: "SIGN IN", message: "Unable to create user.")
+                            
+                        } else{
+                            //User created
+                            print("\(self.TAG) Email User Success: User Successfully created with firebase")
+                            
+                             self.showAlert(title: "SIGN IN", message: "Account Created Successfully")
+                        }
+                    })
+                }
+                
+            })
+            
+            
+        } else{
+            showAlert(title: "SIGN IN", message: "Empty email or password.")
+        }
+        
+        
+    }
+    
     
 
 }

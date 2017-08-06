@@ -93,13 +93,13 @@
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjK-3U-C10" customClass="FancyField" customModule="MySocialApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="33" width="228" height="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="CeraGR-Light" family="CeraGR-Light" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-CW-i3a" customClass="FancyBtn" customModule="MySocialApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="228" height="31"/>
@@ -108,6 +108,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uz7-Ez-5Jk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -131,6 +134,10 @@
                             <constraint firstItem="gRd-jy-7AM" firstAttribute="top" secondItem="x4G-7A-NjJ" secondAttribute="bottom" constant="20" id="xRD-hg-Yfe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="dK4-BK-SYl" id="vrv-BA-CxY"/>
+                        <outlet property="pwdField" destination="IjK-3U-C10" id="r2O-hg-WTa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
