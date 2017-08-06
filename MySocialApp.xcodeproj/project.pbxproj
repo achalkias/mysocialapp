@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E73A39394B03834D956D7DB /* Pods_MySocialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03CBB86046041ED5BF2AD17 /* Pods_MySocialApp.framework */; };
+		E85C81251F377EB10020E58E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C81241F377EB10020E58E /* CircleView.swift */; };
 		E8CB4DFD1F373F74006225B5 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CB4DFC1F373F74006225B5 /* FeedVC.swift */; };
 		E8F229B11F3622CE00F59DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229B01F3622CE00F59DBC /* AppDelegate.swift */; };
 		E8F229B31F3622CE00F59DBC /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229B21F3622CE00F59DBC /* SignInVC.swift */; };
@@ -28,6 +29,7 @@
 		25879D4FA78708CA1DD20B25 /* Pods-MySocialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySocialApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySocialApp/Pods-MySocialApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B03CBB86046041ED5BF2AD17 /* Pods_MySocialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySocialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B38AE851B2172A4595B06E /* Pods-MySocialApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySocialApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySocialApp/Pods-MySocialApp.release.xcconfig"; sourceTree = "<group>"; };
+		E85C81241F377EB10020E58E /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E8CB4DFC1F373F74006225B5 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		E8F229AD1F3622CE00F59DBC /* MySocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F229B01F3622CE00F59DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				E8F229D91F3644F500F59DBC /* RoundBtn.swift */,
 				E8F229DB1F3646C700F59DBC /* FancyField.swift */,
 				E8F229DD1F3648A900F59DBC /* FancyBtn.swift */,
+				E85C81241F377EB10020E58E /* CircleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E85C81251F377EB10020E58E /* CircleView.swift in Sources */,
 				E8F229DC1F3646C700F59DBC /* FancyField.swift in Sources */,
 				E8F229B31F3622CE00F59DBC /* SignInVC.swift in Sources */,
 				E8F229DA1F3644F500F59DBC /* RoundBtn.swift in Sources */,
