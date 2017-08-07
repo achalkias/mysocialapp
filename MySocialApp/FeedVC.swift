@@ -17,6 +17,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircleView!
+    @IBOutlet weak var captionField: FancyField!
     
     
     // MARK: Variables
@@ -24,6 +25,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<AnyObject, UIImage> = NSCache()
+    var imageSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
         //Get the selected image
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
            imageAdd.image = image
+            imageSelected = true
         } else {
             print("IMAGE: A valid image was not selected")
         }
@@ -110,11 +113,48 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
     // MARK: IBActions
     //----------------
 
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
+        //Check fields and data that are required to post
+        guard let caption = captionField.text, caption != "" else {
+            print("POST: Caption must be entered.")
+            return
+        }
+        
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("POST: An image must be selected")
+            return
+        }
+        
+        //Convert the image to jpeg and compress it
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            
+            //Create a unique identifier and metaData content type
+            let imgUid = NSUUID().uuidString
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
+            
+            //Post image to storage
+            DataService.ds.REF_POST_IMAGES.child(imgUid).putData(imgData,metadata: metaData) {
+                (metaData,error) in
+                if error != nil {
+                    print("Unable to upload image to firebse storage")
+                } else {
+                    print("Image successfully uploded to firebase storage")
+                    let downloadURL = metaData?.downloadURL()?.absoluteString
+                    
+                }
+            }
+            
+            
+            
+        }
+        
+    }
+    
     @IBAction func addImageTapped(_ sender: Any) {
-        
-        
+        //Open Image Picker View
         present(imagePicker, animated: true, completion: nil)
-        
     }
     
     
