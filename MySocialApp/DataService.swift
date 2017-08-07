@@ -13,11 +13,15 @@ import Firebase
 //Get the firebase database reference url
 let DB_BASE = Database.database().reference()
 
-class DataService {
+//Get the firebase storage reference url
+let STORAGE_BASE = Storage.storage().reference()
 
+class DataService {
+    
     //Create a single instance of the class
     static let ds = DataService()
     
+    ///DB REFERENCES
     //Refernce url
     private var _REF_BASE = DB_BASE
     
@@ -26,6 +30,10 @@ class DataService {
     
     //Users reference
     private var _REF_USERS = DB_BASE.child("users")
+    
+    ///STORAGE REFERENCES
+    private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    
     
     //Getters
     var REF_BASE: DatabaseReference{
@@ -39,6 +47,11 @@ class DataService {
     var REF_USERS: DatabaseReference{
         return _REF_USERS
     }
+    
+    var REF_POST_IMAGES: StorageReference{
+        return _REF_POST_IMAGES
+    }
+    
     
     func createFirebaseDBUser(uid: String,userData: Dictionary<String,String>) {
         //Create a user. Using user unique id. If the object dont exists it will be created.
@@ -54,5 +67,5 @@ class DataService {
     
     
     
-
+    
 }
