@@ -25,6 +25,7 @@
 		E8F229DA1F3644F500F59DBC /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229D91F3644F500F59DBC /* RoundBtn.swift */; };
 		E8F229DC1F3646C700F59DBC /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229DB1F3646C700F59DBC /* FancyField.swift */; };
 		E8F229DE1F3648A900F59DBC /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F229DD1F3648A900F59DBC /* FancyBtn.swift */; };
+		E8FFB8D41F383FD3008DB2D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FFB8D31F383FD3008DB2D4 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E8F229D91F3644F500F59DBC /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		E8F229DB1F3646C700F59DBC /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		E8F229DD1F3648A900F59DBC /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		E8FFB8D31F383FD3008DB2D4 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		E8F229C41F36265200F59DBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8FFB8D31F383FD3008DB2D4 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				E85C81251F377EB10020E58E /* CircleView.swift in Sources */,
 				E8F229DC1F3646C700F59DBC /* FancyField.swift in Sources */,
 				E8F229B31F3622CE00F59DBC /* SignInVC.swift in Sources */,
+				E8FFB8D41F383FD3008DB2D4 /* Post.swift in Sources */,
 				E8F229DA1F3644F500F59DBC /* RoundBtn.swift in Sources */,
 				E8F229B11F3622CE00F59DBC /* AppDelegate.swift in Sources */,
 				E85C812A1F37A2C90020E58E /* DataService.swift in Sources */,

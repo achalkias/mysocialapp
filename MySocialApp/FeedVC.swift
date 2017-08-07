@@ -17,7 +17,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
+    // MARK: Variables
+    //----------------
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,26 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         //Get database refernce
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
-            print(snapshot.value)
+            //Get the data from firebase and pass them to objects
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapshot {
+                    print("SNAP: \(snap)")
+                    
+                    //Store data
+                    if let postDict = snap.value as? Dictionary<String,AnyObject> {
+                        let key = snap.key
+                        let post = Post(postKey: key, postData: postDict)
+                        
+                        //Add post to array
+                        self.posts.append(post)
+                        
+                    }
+                }
+                //Reload tableview data
+                self.tableView.reloadData()
+                
+            }
         })
         
     }
@@ -38,10 +59,14 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let post = posts[indexPath.row]
+        print("CellData: \(post.caption)")
+        
         return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
     }
     
