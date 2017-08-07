@@ -42,7 +42,7 @@ class PostCell: UITableViewCell {
         self.post = post
         
         //Get likes refernce
-        likesRef = DataService.ds.REF_POSTS.child("likes").child(post.postKey)
+        likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         
         
         self.caption.text = post.caption

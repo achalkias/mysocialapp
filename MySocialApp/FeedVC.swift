@@ -75,19 +75,16 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //Create an object of type post
+        
         let post = posts[indexPath.row]
         
-        //Pass the object as cell item
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             
-            if let img = FeedVC.imageCache.object(forKey: post.imgurl as AnyObject) {
-               cell.configureCell(post: post,img: img)
+            if let img = FeedVC.imageCache.object(forKey: post.imgurl as NSString) {
+                cell.configureCell(post: post, img: img)
             } else {
                 cell.configureCell(post: post)
             }
-            
-            
             return cell
         } else {
             return PostCell()
@@ -126,7 +123,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
         captionField.text = ""
         imageSelected = false
         imageAdd.image = UIImage(named: "add-image")
-        
+       
+        //Reload tableview data
+        self.tableView.reloadData()
     }
     
     
@@ -165,6 +164,10 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
                     if let url = downloadURL {
                         self.postToFirebase(imgUrl: url)
                     }
+                    
+                    //Close keyboard
+                    //Close keyboard
+                    self.view.endEditing(true)
                     
                 }
             }
