@@ -33,6 +33,8 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             //Get the data from firebase and pass them to objects
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 
+                self.posts = []
+                
                 for snap in snapshot {
                     print("SNAP: \(snap)")
                     
@@ -64,10 +66,17 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //Create an object of type post
         let post = posts[indexPath.row]
-        print("CellData: \(post.caption)")
         
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        //Pass the object as cell item
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
+            cell.configureCell(post: post)
+            return cell
+        } else {
+            return PostCell()
+        }
+        
     }
     
 
