@@ -10,16 +10,19 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     // MARK: IBOutlets
     //----------------
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageAdd: CircleView!
+    
     
     // MARK: Variables
     //----------------
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true //User can edit the image
         
         //Get database refernce
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
@@ -79,7 +85,31 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //Get the selected image
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+           imageAdd.image = image
+        } else {
+            print("IMAGE: A valid image was not selected")
+        }
+        
+        //Close the imagepicker when the user select an image
+        imagePicker.dismiss(animated: true, completion: nil)
+      
+    }
+    
+    // MARK: IBActions
+    //----------------
 
+    @IBAction func addImageTapped(_ sender: Any) {
+        
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
     @IBAction func signOutTapped(_ sender: UIButton) {
         
         //Remove the uid from keychain
@@ -92,4 +122,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         performSegue(withIdentifier: "goToSignIn", sender: nil)
         
     }
+    
+    
+    
 }

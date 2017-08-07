@@ -25,6 +25,7 @@ class CircleView: UIImageView {
         
         //Set some perfect round corners. Do it here because the frame size has been decided
         layer.cornerRadius = self.frame.width / 2
+        clipsToBounds = true
         
     }
 
