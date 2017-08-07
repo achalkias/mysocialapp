@@ -110,6 +110,26 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
       
     }
     
+    
+    func postToFirebase(imgUrl: String) {
+        let post: Dictionary<String, Any> = [
+            "caption": captionField.text!,
+            "imageurl": imgUrl,
+            "likes": 0
+        ]
+        
+        //Create a firebase post and set it child id and the value which is the dictionary 'post'
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        //Clear fields and reset image
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+    }
+    
+    
     // MARK: IBActions
     //----------------
 
@@ -142,6 +162,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIImag
                 } else {
                     print("Image successfully uploded to firebase storage")
                     let downloadURL = metaData?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: url)
+                    }
                     
                 }
             }
